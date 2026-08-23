@@ -1,0 +1,18 @@
+# secrets
+config.py
+
+# python env / caches
+parking_venv/
+__pycache__/
+*.pyc
+
+# large model weights (download on demand)
+models/
+*.pt
+
+# runtime data & captures (privacy + size)
+data/
+diagnostics/
+logs/
+*.log
+*.mp4

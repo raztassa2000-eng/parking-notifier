@@ -1,0 +1,4 @@
+opencv-python
+numpy
+requests
+# ultralytics   # optional — only for the (unused) YOLO approach in parking_notifier.py
