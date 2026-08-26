@@ -16,3 +16,6 @@ diagnostics/
 logs/
 *.log
 *.mp4
+
+# gh auth token dir
+.ghconfig/
