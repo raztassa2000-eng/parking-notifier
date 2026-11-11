@@ -10,20 +10,22 @@ and we alert when its contents change AND go flat (a car leaving reveals asphalt
 
 ## Structure
 - `parking_watch.py`   – main detector (resilient, single RTSP connection). RUN THIS.
-- `parking_notifier.py`– config/secrets (RTSP URL, Telegram token/chat) + YOLO version (unused).
+- `parking_notifier.py`– loads the config + the earlier YOLO version (unused).
+- `config_example.py`  – template for your RTSP URL and Telegram bot token / chat id.
 - `live_view.py`       – live window: red=occupied, green=empty (q to quit). Steals a camera slot.
 - `test_departure.py`  – simulate a car leaving to test the alert pipeline.
+- `timelapse_capture.py` – saves periodic frames for a timelapse.
 - `spots.json`         – the 6 hand-drawn spot boxes.
-- `data/`              – metrics_log.csv, timelapse/ frames, events/ (free-spot photos).
-- `logs/`              – runtime logs.
-- `diagnostics/`       – snapshots used while building/tuning.
-- `models/`            – YOLO weights (unused; ~190MB, safe to delete).
-- `parking_venv/`      – Python environment.
+
+Runtime folders (`data/`, `logs/`, `diagnostics/`) are created locally and are not in the repo.
+
+## Setup
+    pip install -r requirements.txt
+    cp config_example.py config.py     # then fill in RTSP_URL, BOT_TOKEN, CHAT_ID
 
 ## Run
-    cd parking_project
-    ./parking_venv/bin/python parking_watch.py        # detector (background it with nohup)
-    ./parking_venv/bin/python live_view.py            # optional live window
+    python parking_watch.py            # detector (background it with nohup)
+    python live_view.py                # optional live window
 
 ## Tuning knobs (top of parking_watch.py)
 - CHANGE_THRESH (0.12) – how different from "parked" counts as changed
